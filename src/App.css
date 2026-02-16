@@ -4,7 +4,7 @@ html, body {
 
 @font-face {
   font-family: 'nuevaFuente';
-  src: url('/Cat_paw.ttf') format('truetype');
+  src: url(/fonts/Cat_paw.ttf) format('truetype');
 }
 
 
