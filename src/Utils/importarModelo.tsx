@@ -7,7 +7,7 @@ export const useImportarModeloCNN = () => {
   useEffect(() => {
     (async () => {
       console.log('cargando modelo...');
-      const m = await tf.loadLayersModel('/CNN-37-Perros-Gatos-tfjs/model.json');
+      const m = await tf.loadLayersModel('./CNN-37-Perros-Gatos-tfjs/model.json');
       setModelo(m);
       console.log('modelo cargado');
     })();
