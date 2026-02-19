@@ -13,11 +13,21 @@ const Video = ({ onPredic }: VideoProps) => {
     const [version,setVersion] = useState(0);
 
     useEffect(() => {
-        if (videoRef.current) {
-            getVideo(videoRef);
-            setReady(true); 
-            setVersion(v=>v+1)
-          }
+        let activeStream: MediaStream | null = null;
+        let mounted = true;
+
+        (async () => {
+          activeStream = await getVideo(videoRef);
+          if (!mounted || !activeStream) return;
+
+          setReady(true);
+          setVersion(v => v + 1);
+        })();
+
+        return () => {
+          mounted = false;
+          activeStream?.getTracks().forEach(track => track.stop());
+        };
     }, []);
   
     return (

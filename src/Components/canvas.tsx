@@ -14,10 +14,11 @@ export const Canvas = ({ videoRef, versionVideo, onPredic }: CanvasProps) =>{
 
     useEffect(()=>{
         if (videoRef && canvasRef.current) {
-            procesarCanvas({ videoCurrent: videoRef, canvasRef });
+                        const cleanup = procesarCanvas({ videoCurrent: videoRef, canvasRef });
+                        return cleanup;
           }
 
-    },[versionVideo])
+        },[videoRef, versionVideo])
 
 
     return(
